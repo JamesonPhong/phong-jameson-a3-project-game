@@ -7,11 +7,12 @@ namespace MohawkGame2D
     {
         public void Setup()
         {
-
+            Window.SetTitle("Bounty Runner");
+            Window.SetSize(800, 600);
         }
         public void Update()
         {
-
+            Window.ClearBackground(Color.OffWhite);
         }
     }
 }
