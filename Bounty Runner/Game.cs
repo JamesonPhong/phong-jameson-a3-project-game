@@ -13,6 +13,12 @@ namespace MohawkGame2D
         public void Update()
         {
             Window.ClearBackground(Color.OffWhite);
+
+            // Draw a flat ground
+            Draw.LineSize = 1;
+            Draw.LineColor = Color.Black;
+            Draw.FillColor = Color.Gray;
+            Draw.Rectangle(0, 450, Window.Width, 450);
         }
     }
 }
