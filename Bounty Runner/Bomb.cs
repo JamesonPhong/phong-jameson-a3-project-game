@@ -6,9 +6,31 @@ public class Bomb
 {
     Vector2 position;
     Vector2 velocity;
-
+    int size;
+    Color color;
     public void Setup()
     {
-        position = new Vector2();
+        // Spawn position of bombs
+        position = new Vector2(875, 425);
+
+        // Move left at a random speed
+        Vector2 direction = new Vector2(-1, 0);
+        float speed = Random.Float(100, 900);
+        velocity = direction * speed;
+
+        // Bomb size and colour
+        size = 25;
+        color = Color.Black;
+    }
+    public void Update()
+    {
+        // Movement of bombs
+        position += velocity * Time.DeltaTime;
+
+        // Draw the bombs
+        Draw.LineSize = 1;
+        Draw.LineColor = Color.Black;
+        Draw.FillColor = color;
+        Draw.Circle(position.X, position.Y, size);
     }
 }
