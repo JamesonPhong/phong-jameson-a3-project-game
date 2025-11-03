@@ -5,8 +5,8 @@ namespace MohawkGame2D
 {
     public class Game
     {
-        float changeLandscape = Time.SecondsElapsed;
-        float doesLandScapeChange = Random.Float(9);
+        Vector2 position;
+        Vector2 velocity;
         public void Setup()
         {
             Window.SetTitle("Bounty Runner");
@@ -24,7 +24,7 @@ namespace MohawkGame2D
 
             Player();
         }
-        public void Player()
+        void Player()
         {
             // Draw player head
             Draw.LineSize = 1;
