@@ -21,6 +21,22 @@ namespace MohawkGame2D
             Draw.LineColor = Color.Black;
             Draw.FillColor = Color.Gray;
             Draw.Rectangle(0, 450, Window.Width, 450);
+
+            Player();
+        }
+        public void Player()
+        {
+            // Draw player head
+            Draw.LineSize = 1;
+            Draw.LineColor = Color.Black;
+            Draw.FillColor = Color.Black;
+            Draw.Circle(175, 325, 25);
+
+            // Draw player body
+            Draw.LineSize = 1;
+            Draw.LineColor = Color.Black;
+            Draw.FillColor = Color.Black;
+            Draw.Rectangle(150, 350, 50, 100);
         }
     }
 }
