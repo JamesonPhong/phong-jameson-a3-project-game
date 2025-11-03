@@ -5,6 +5,8 @@ namespace MohawkGame2D
 {
     public class Game
     {
+        float changeLandscape = Time.SecondsElapsed;
+        float doesLandScapeChange = Random.Float(9);
         public void Setup()
         {
             Window.SetTitle("Bounty Runner");
