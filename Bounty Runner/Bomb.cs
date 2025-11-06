@@ -4,19 +4,19 @@ using System.Numerics;
 namespace MohawkGame2D;
 public class Bomb
 {
-    Vector2 position;
+    public Vector2 position;
     Vector2 velocity;
     int size;
     Color color;
-    public void Setup()
+    public void Setup(int x, int s)
     {
         // Spawn position of bombs
-        position = new Vector2(875, 425);
+        position = new Vector2(x, 425);
 
         // Move left at a random speed
         Vector2 direction = new Vector2(-1, 0);
-        float speed = Random.Float(100, 900);
-        velocity = direction * speed;
+        float speed = 100;
+        velocity = direction * s;
 
         // Bomb size and colour
         size = 25;

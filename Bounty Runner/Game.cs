@@ -5,9 +5,10 @@ namespace MohawkGame2D
 {
     public class Game
     {
-        Bomb[] bombs = new Bomb[1];
+        Bomb[] bombs = new Bomb[300];
         Vector2 position;
         Vector2 velocity;
+        int speedLimit = 0;
         public void Setup()
         {
             Window.SetTitle("Bounty Runner");
@@ -17,8 +18,13 @@ namespace MohawkGame2D
 
             for (int i = 0; i < bombs.Length; i++)
             {
+                if (speedLimit > 10)
+                {
+                    speedLimit -= 1;
+                }
                 bombs[i] = new Bomb();
-                bombs[i].Setup();
+                bombs[i].Setup(Window.Width + (1000 * i) * 2, 100 * (10 + speedLimit));
+                speedLimit += 1;
             }
         }
         public void Update()
@@ -57,7 +63,7 @@ namespace MohawkGame2D
             if (Input.IsKeyboardKeyPressed(KeyboardInput.Up) ||
                 Input.IsKeyboardKeyPressed(KeyboardInput.W))
             {
-                position.Y -= 105;
+                position.Y -= 100;
             }
             // Player Moves Left
             if (Input.IsKeyboardKeyDown(KeyboardInput.Left) || 
@@ -74,7 +80,7 @@ namespace MohawkGame2D
         }
         void PlayerGravity()
         {
-            velocity += new Vector2(0,105) * Time.DeltaTime;
+            velocity += new Vector2(0,40) * Time.DeltaTime;
             position += velocity;
             if (position.Y > 300)
             {
