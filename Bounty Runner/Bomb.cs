@@ -15,7 +15,6 @@ public class Bomb
 
         // Move left at a random speed
         Vector2 direction = new Vector2(-1, 0);
-        float speed = 100;
         velocity = direction * s;
 
         // Bomb size and colour
@@ -32,5 +31,9 @@ public class Bomb
         Draw.LineColor = Color.Black;
         Draw.FillColor = color;
         Draw.Circle(position.X, position.Y, size);
+    }
+    public void CollideWithPlayer()
+    {
+
     }
 }

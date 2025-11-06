@@ -18,13 +18,16 @@ namespace MohawkGame2D
 
             for (int i = 0; i < bombs.Length; i++)
             {
-                if (speedLimit > 10)
+                if (speedLimit > 5)
                 {
-                    speedLimit -= 1;
+                    speedLimit = Random.Integer(5, 10);
+                }
+                else
+                {
+                    speedLimit += 1;
                 }
                 bombs[i] = new Bomb();
                 bombs[i].Setup(Window.Width + (1000 * i) * 2, 100 * (10 + speedLimit));
-                speedLimit += 1;
             }
         }
         public void Update()
