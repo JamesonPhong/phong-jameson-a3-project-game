@@ -9,10 +9,16 @@ namespace MohawkGame2D
         Bomb[] bombs = new Bomb[300];
         Player player = new Player();
         int speedLimit = 0;
+        float timeSurvived;
         public void Setup()
         {
             Window.SetTitle("Bounty Runner");
             Window.SetSize(800, 600);
+
+            // Game Reset
+            player.playerLives = 5;
+            timeSurvived = 0;
+            Time.SecondsElapsed = 0;
 
             for (int i = 0; i < bombs.Length; i++)
             {
@@ -31,6 +37,17 @@ namespace MohawkGame2D
         }
         public void Update()
         {
+            if (player.playerLives == 0)
+            {
+                EndScreen();
+            }
+            else
+            {
+                BountyRunnerGame();
+            }
+        }
+        void BountyRunnerGame()
+        {
             Window.ClearBackground(Color.OffWhite);
 
             // Draw a flat ground
@@ -41,8 +58,13 @@ namespace MohawkGame2D
 
             // Draw Player Lives on screen
             string playerLiveCount = $"Player Lives: {player.playerLives}";
+            string trackTimeSurvived = $"Time Survived: {Time.SecondsElapsed:0.0}";
+
+            // Draw Time Survived on screen
+            timeSurvived = Time.SecondsElapsed;
             Text.Color = Color.Black;
             Text.Draw(playerLiveCount, 50, 50);
+            Text.Draw(trackTimeSurvived, 50, 100);
 
             for (int i = 0; i < bombs.Length; i++)
             {
@@ -53,6 +75,20 @@ namespace MohawkGame2D
             // Draw Player Avatar on screen
             player.PlayerAvatar();
             player.PlayerGravity();
+        }
+        void EndScreen()
+        {
+            Window.ClearBackground(Color.OffWhite);
+            Text.Color = Color.Black;
+            string endText = $"Time Survived: {timeSurvived:0.0}\nPress R to Retry";
+            float y = Window.Height / 2 - Text.Size;
+            Text.Draw(endText, 50, y);
+
+            // Reset Game
+            if (Input.IsKeyboardKeyPressed(KeyboardInput.R))
+            {
+                Setup();
+            }
         }
     }
 }
