@@ -9,7 +9,6 @@ namespace MohawkGame2D
         Bomb[] bombs = new Bomb[300];
         Player player = new Player();
         int speedLimit = 0;
-        int playerLives = 5;
         public void Setup()
         {
             Window.SetTitle("Bounty Runner");
@@ -41,16 +40,17 @@ namespace MohawkGame2D
             Draw.Rectangle(0, 450, Window.Width, 450);
 
             // Draw Player Lives on screen
-            string playerLiveCount = $"Player Lives: {playerLives}";
+            string playerLiveCount = $"Player Lives: {player.playerLives}";
             Text.Color = Color.Black;
             Text.Draw(playerLiveCount, 50, 50);
 
             for (int i = 0; i < bombs.Length; i++)
             {
                 bombs[i].Update();
-                // CollideWithPlayer(bombs[i]);
+                player.CollideWithPlayer(bombs[i]);
             }
 
+            // Draw Player Avatar on screen
             player.PlayerAvatar();
             player.PlayerGravity();
         }

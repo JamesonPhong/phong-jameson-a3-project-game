@@ -7,6 +7,7 @@ namespace MohawkGame2D
     {
         public Vector2 position = new Vector2(100, 300);
         Vector2 velocity;
+        public int playerLives = 5;
         public void PlayerAvatar()
         {
             // Draw player head
@@ -42,12 +43,42 @@ namespace MohawkGame2D
         }
         public void PlayerGravity()
         {
+            // Calculate Player Gravity
             velocity += new Vector2(0, 40) * Time.DeltaTime;
             position += velocity;
+
+            // Ensures Player doesn't fall through the floor
             if (position.Y > 300)
             {
                 position.Y = 300;
                 velocity.Y = 0;
+            }
+        }
+        public void CollideWithPlayer(Bomb bomb)
+        {
+            if (bomb.hitThePlayer == true)
+            {
+
+            }
+            else
+            {
+                float bombLeft = bomb.position.X - bomb.size;
+                float bombRight = bomb.position.X + bomb.size;
+                float bombTop = bomb.position.Y - bomb.size;
+
+                float playerLeft = position.X;
+                float playerRight = position.X + 50;
+                float playerBottom = position.Y + 100;
+
+                bool bombCollidePlayerRight = bombLeft <= playerRight;
+                bool bombCollidePlayerLeft = bombRight >= playerLeft;
+                bool bombCollidePlayerBottom = bombTop <= playerBottom;
+
+                if (bombCollidePlayerLeft && bombCollidePlayerRight && bombCollidePlayerBottom)
+                {
+                    playerLives -= 1;
+                    bomb.hitThePlayer = true;
+                }
             }
         }
     }
