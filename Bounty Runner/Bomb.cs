@@ -6,7 +6,7 @@ public class Bomb
 {
     public Vector2 position;
     Vector2 velocity;
-    int size;
+    public int size;
     Color color;
     public void Setup(int x, int s)
     {
@@ -31,9 +31,5 @@ public class Bomb
         Draw.LineColor = Color.Black;
         Draw.FillColor = color;
         Draw.Circle(position.X, position.Y, size);
-    }
-    public void CollideWithPlayer()
-    {
-
     }
 }
