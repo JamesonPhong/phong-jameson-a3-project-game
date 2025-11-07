@@ -3,6 +3,6 @@ Assignment 3 from Game Development Foundations of Mohawk College's Game Design P
 
 Bounty Runner is a variant of T-Rex Runner.
 The Controls are:
-A / Left Arrow Key moves the Player Left
-D / Right Arrow Key moves the Player Right
+A / Left Arrow Key moves the Player Left |
+D / Right Arrow Key moves the Player Right |
 W / Up Arrow Key moves the Player Up
