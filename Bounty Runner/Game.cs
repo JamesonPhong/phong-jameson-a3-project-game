@@ -37,11 +37,12 @@ namespace MohawkGame2D
         }
         public void Update()
         {
+            // End the Game Player has no more lives
             if (player.playerLives == 0)
             {
                 EndScreen();
             }
-            else
+            else // Run the Game if Player has lives
             {
                 BountyRunnerGame();
             }

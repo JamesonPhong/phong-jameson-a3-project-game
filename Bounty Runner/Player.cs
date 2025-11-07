@@ -56,11 +56,12 @@ namespace MohawkGame2D
         }
         public void CollideWithPlayer(Bomb bomb)
         {
+            // Remove Collision Detection for any Bombs that hit the Player
             if (bomb.hitThePlayer == true)
             {
 
             }
-            else
+            else // Bomb Collision Detection
             {
                 float bombLeft = bomb.position.X - bomb.size;
                 float bombRight = bomb.position.X + bomb.size;
@@ -74,6 +75,7 @@ namespace MohawkGame2D
                 bool bombCollidePlayerLeft = bombRight >= playerLeft;
                 bool bombCollidePlayerBottom = bombTop <= playerBottom;
 
+                // Check if Bomb hits Player
                 if (bombCollidePlayerLeft && bombCollidePlayerRight && bombCollidePlayerBottom)
                 {
                     playerLives -= 1;
